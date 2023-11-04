@@ -3,23 +3,109 @@
 {% block title %}Conversation{% endblock %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .space-y-6 > *:not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
+
+        .p-6 {
+            padding: 1.5rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .bg-blue-200 {
+            background-color: #93C5FD; /* Replace with the desired color */
+        }
+
+        .bg-gray-100 {
+            background-color: #F3F4F6; /* Replace with the desired color */
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .strong {
+            font-weight: bold;
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+
+        .bg-teal-500 {
+            background-color: #48BB78; /* Replace with the desired color */
+        }
+
+        .hover-bg-teal-700:hover {
+            background-color: #2F855A; /* Replace with the desired color */
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+
+        .text-white {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    
 <h1 class="mb-6 text-3xl">Conversation</h1>
 <div class="space-y-6">
     {% for message in conversation.messages.all %}
-    
-        <div class="p-6 flex {% if message.created_by == request.user %} bg-blue-200 {% else %}bg-gray-100 {% endif %}rounded-xl">
+        <div class="p-6 flex {{ message.created_by == request.user ? 'bg-blue-200' : 'bg-gray-100' }} rounded-xl">
             <div>
                 <p class="mb-4"><strong>{{message.created_by.username}}</strong> @ {{message.created_at}}</p>
                 <p>{{message.content}}</p>
             </div>
         </div>
-    
     {% endfor %}
 </div>
 
 <form method="POST" action=".">
     {% csrf_token %}
     {{form.as_p}}
-    <button class="py-4 px-8 text-lg mt-2 bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Send</button>
+    <button class="py-4 px-8 text-lg mt-2 bg-teal-500 hover-bg-teal-700 rounded-xl text-white">Send</button>
 </form>
 {% endblock %}
+
+</body>
+</html>
