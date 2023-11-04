@@ -3,90 +3,23 @@
 {% block title %} New Conversation {% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            font-size: 1.875rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .space-y-4 > *:not(:last-child) {
-            margin-bottom: 1rem;
-        }
-
-        .mb-3 {
-            margin-bottom: 0.75rem;
-        }
-
-        .p-6 {
-            padding: 1.5rem;
-        }
-
-        .bg-red-100 {
-            background-color: #FECACA; /* Replace with the desired color */
-        }
-
-        .rounded-xl {
-            border-radius: 0.75rem;
-        }
-
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .px-8 {
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-
-        .mt-6 {
-            margin-top: 1.5rem;
-        }
-
-        .text-lg {
-            font-size: 1.125rem;
-        }
-
-        .bg-teal-500 {
-            background-color: #48BB78; /* Replace with the desired color */
-        }
-
-        .hover-bg-teal-700:hover {
-            background-color: #2F855A; /* Replace with the desired color */
-        }
-
-        .text-white {
-            color: #FFFFFF;
-        }
-    </style>
-</head>
-<body>
 <h1 class="mb-6 text-3xl">New Conversation</h1>
 <form method="POST" action=".">
     {% csrf_token %}
+
     <div class="space-y-4">
         {{ form.as_p }}
     </div>
-    {% if form.errors or form.non_field_errors %}
-    <div class="mb-3 p-6 bg-red-100 rounded-xl">
-        {% for field in form %}
-        {{ field.errors }}
-        {% endfor %}
-        {{ form.non_field_errors }}
-    </div>
-    {% endif %}
-    <button class="py-4 px-8 mt-6 text-lg bg-teal-500 hover-bg-teal-700 rounded-xl text-white">Send</button>
+
+        {% if form.errors or form.non_field_errors %}
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in form %}
+                {{ field.errors }}
+                {% endfor %}
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+    <button class="py-4 px-8 mt-6 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Send</button>
 </form>
 {% endblock %}
-</body>
-</html>

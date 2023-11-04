@@ -3,61 +3,6 @@
 {% block title %}Inbox{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            font-size: 1.875rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .space-y-6 > *:not(:last-child) {
-            margin-bottom: 1.5rem;
-        }
-
-        .p-6 {
-            padding: 1.5rem;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .bg-gray-100 {
-            background-color: #f3f4f6;
-        }
-
-        .rounded-xl {
-            border-radius: 0.75rem;
-        }
-
-        .pr-6 {
-            padding-right: 1.5rem;
-        }
-
-        .w-20 {
-            width: 5rem;
-        }
-
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-
-        .strong {
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    
 <h1 class="mb-6 text-3xl">Inbox</h1>
 <div class="space-y-6">
     {% for conversation in conversations %}
@@ -71,17 +16,13 @@
 
                 {% for member in conversation.members.all %}
                     {% if member != request.user %}
-                    <p class="mb-4 strong">{{member.username}} | {{conversation.modified_at}}</p>
+                    <p class="mb-4"><strong>{{member.username}}</strong> | {{conversation.modified_at}}</p>
                     <p>{{conversation.item.name}}</p>
                     {% endif %}
-                {% endfor %}
+                    {% endfor %}
             </div>
         </div>
     </a>
     {% endfor %}
 </div>
 {% endblock %}
-
-
-</body>
-</html>

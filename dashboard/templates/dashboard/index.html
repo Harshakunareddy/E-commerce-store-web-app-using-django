@@ -3,89 +3,10 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
 
-        .mt-6 {
-            margin-top: 1.5rem;
-        }
-
-        .py-12 {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-        }
-
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-
-        .bg-gray-100 {
-            background-color: #F3F4F6; /* Replace with the desired color */
-        }
-
-        .rounded-xl {
-            border-radius: 1rem;
-        }
-
-        .mb-12 {
-            margin-bottom: 3rem;
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .grid {
-            display: grid;
-        }
-
-        .grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .gap-3 {
-            gap: 0.75rem;
-        }
-
-        .bg-white {
-            background-color: #FFFFFF;
-        }
-
-        .rounded-t-xl {
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-        }
-
-        .rounded-b-xl {
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-        }
-
-        .text-gray-500 {
-            color: #6B7280; /* Replace with the desired color */
-        }
-    </style>
-</head>
-<body>
 <div class="mt-6 py-12 px-6 bg-gray-100 rounded-xl">
     <h1 class="mb-12 text-2xl text-center" >My Items</h1>
+
     <div class="grid grid-cols-3 gap-3">
         {% for item in items %}
         <div>
@@ -93,6 +14,7 @@
                 <div>
                     <img src="{{ item.image.url }}" class="rounded-t-xl"> 
                 </div>
+
                 <div class="p-6 bg-white rounded-b-xl">
                     <h2 class="text-2xl">{{ item.name }}</h2>
                     <p class="text-gray-500">Price:{{item.price}}</p>
@@ -103,5 +25,3 @@
     </div>
 </div>
 {% endblock %}
-</body>
-</html>

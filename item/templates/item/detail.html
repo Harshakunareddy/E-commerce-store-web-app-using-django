@@ -3,153 +3,29 @@
 {% block title %} {{item.name}} {% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
 
-        .grid {
-            display: grid;
-        }
-
-        .grid-cols-5 {
-            grid-template-columns: repeat(5, 1fr);
-        }
-
-        .grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .gap-6 {
-            gap: 1.5rem;
-        }
-
-        .col-span-3 {
-            grid-column: span 3;
-        }
-
-        .col-span-2 {
-            grid-column: span 2;
-        }
-
-        .rounded-xl {
-            border-radius: 1rem;
-        }
-
-        .mb-6 {
-            margin-bottom: 1.5rem;
-        }
-
-        .text-3xl {
-            font-size: 1.875rem;
-        }
-
-        .text-gray-500 {
-            color: #6B7280; /* Replace with the desired color */
-        }
-
-        .text-gray-700 {
-            color: #374151; /* Replace with the desired color */
-        }
-
-        .bg-gray-100 {
-            background-color: #F3F4F6; /* Replace with the desired color */
-        }
-
-        .bg-white {
-            background-color: #FFFFFF;
-        }
-
-        .mt-6 {
-            margin-top: 1.5rem;
-        }
-
-        .p-6 {
-            padding: 1.5rem;
-        }
-
-        .mb-12 {
-            margin-bottom: 3rem;
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .rounded-t-xl {
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-        }
-
-        .rounded-b-xl {
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-        }
-
-        .rounded-b-xl {
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-        }
-
-        .inline-block {
-            display: inline-block;
-        }
-
-        .hover\:bg-teal-700:hover {
-            background-color: #4B5563; /* Replace with the desired color */
-        }
-
-        .bg-teal-500 {
-            background-color: #6EE7B7; /* Replace with the desired color */
-        }
-
-        .text-white {
-            color: #FFFFFF;
-        }
-
-        .bg-red-500 {
-            background-color: #EF4444; /* Replace with the desired color */
-        }
-
-        .rounded-xl {
-            border-radius: 1rem;
-        }
-
-        .bg-teal-500 {
-            background-color: #6EE7B7; /* Replace with the desired color */
-        }
-    </style>
-</head>
-<body>
 <div class="grid grid-cols-5 gap-6">
     <div class="col-span-3">
         <img src="{{item.image.url}}" class="rounded-xl">
     </div>
 
     <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
-        <h1 class="mb-6 text-3xl">{{item.name}}</h1>
+        <h1 class="mb-6" text-3xl>{{item.name}}</h1>
         <p class="text-gray-500">
-            <strong>Price: {{item.price}}</strong>
+            <Strong>Price:{{item.price}}</Strong>
         </p>
         <p class="text-gray-500">
-            <strong>Seller: {{item.created_by}}</strong>
+            <Strong>Seller:{{item.created_by}}</Strong>
         </p>
         {% if item.description %}
+
         <p class="text-gray-700">
             <strong class="text-gray-500">Description:</strong><br>
             {{item.description}}
         </p>
+
         {% endif %}
+
         {% if request.user == item.created_by %}
         <div class="mt-6 p-6 bg-white rounded-xl">
             <p>This is your Item!</p>
@@ -157,9 +33,9 @@
             <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Delete</a>
         </div>
         {% else %}
-        <a href="{% url 'conversation:new' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact Seller</a>
-        {% endif %}
-    </div>
+            <a href="{% url 'conversation:new' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700" >Contact Seller</a>
+        {% endif %}    
+        </div>
 </div>
 
 <div class="mt-6 py-12 px-6 bg-gray-100 rounded-xl">
@@ -170,18 +46,20 @@
         <div>
             <a href="{% url 'item:detail' item.id %}">
                 <div>
-                    <img src="{{item.image.url}}" class="rounded-t-xl"> 
+                    <img src="{{ item.image.url }}" class="rounded-t-xl"> 
                 </div>
+
                 <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">{{item.name}}</h2>
-                    <p class="text-gray-500">Price: {{item.price}}</p>
+                    <h2 class="text-2xl">{{ item.name }}</h2>
+                    <p class="text-gray-500">Price:{{item.price}}</p>
                 </div>
             </a>
         </div>
         {% endfor %}
     </div>
+
+
+
 </div>
 
 {% endblock %}
-</body>
-</html>

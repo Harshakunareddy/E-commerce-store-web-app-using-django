@@ -1,38 +1,9 @@
 {% extends 'core/base.html' %}
-{% load static %}
 
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
-    <style>
-        /* Custom CSS */
-        .mt-6 { margin-top: 1.5rem; }
-        .md\:mx-4 { margin-left: 1rem; margin-right: 1rem; }
-        .lg\:mx-20 { margin-left: 5rem; margin-right: 5rem; }
-        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-        .bg-gray-100 { background-color: #f3f4f6; }
-        .rounded-xl { border-radius: 0.75rem; }
-        .text-2xl { font-size: 1.5rem; }
-        .text-center { text-align: center; }
-        .grid { display: grid; }
-        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-        .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-        .gap-4 { gap: 1rem; }
-        .md\:gap-6 { gap: 1.5rem; }
-        /* End of Custom CSS */
-    </style>
-</head>
-<body>
-    
+
 <div class="mt-6 md:mx-4 lg:mx-20 px-6 py-12 bg-gray-100 rounded-xl">
     <h1 class="mb-6 text-2xl text-center md:mb-12" >Newest Items</h1>
 
@@ -73,5 +44,3 @@
 </div>
 
 {% endblock %}
-</body>
-</html>

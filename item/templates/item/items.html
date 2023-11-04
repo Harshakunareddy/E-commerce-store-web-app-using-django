@@ -3,165 +3,21 @@
 {% block title %} Items {% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .pb-6 {
-            padding-bottom: 1.5rem;
-        }
-
-        .grid {
-            display: grid;
-        }
-
-        .grid-cols-4 {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .col-span-1 {
-            grid-column: span 1;
-        }
-
-        .mt-6 {
-            margin-top: 1.5rem;
-        }
-
-        .ml-2 {
-            margin-left: 0.5rem;
-        }
-
-        .w-full {
-            width: 100%;
-        }
-
-        .py-6 {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-
-        .border {
-            border: 1px solid #E5E7EB; /* Replace with the desired color */
-        }
-
-        .rounded-xl {
-            border-radius: 1rem;
-        }
-
-        .text-lg {
-            font-size: 1.125rem;
-        }
-
-        .bg-teal-500 {
-            background-color: #6EE7B7; /* Replace with the desired color */
-        }
-
-        .text-white {
-            color: #FFFFFF;
-        }
-
-        .my-6 {
-            margin-top: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .rounded-t-xl {
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-        }
-
-        .p-6 {
-            padding: 1.5rem;
-        }
-
-        .bg-white {
-            background-color: #FFFFFF;
-        }
-
-        .rounded-b-xl {
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-        }
-
-        .text-gray-500 {
-            color: #6B7280; /* Replace with the desired color */
-        }
-
-        .hr {
-            margin-top: 1.5rem;
-            border-top: 1px solid #E5E7EB; /* Replace with the desired color */
-        }
-
-        .font-semibold {
-            font-weight: 600;
-        }
-
-        .py-2 {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-
-        .px-2 {
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
-        }
-
-        .bg-gray-200 {
-            background-color: #F3F4F6; /* Replace with the desired color */
-        }
-
-        .bg-yellow-500 {
-            background-color: #F6E05E; /* Replace with the desired color */
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .bg-gray-100 {
-            background-color: #F3F4F6; /* Replace with the desired color */
-        }
-    </style>
-</head>
-<body>
-    
 <div class="pb-6 grid grid-cols-4 gap-4 bg-gray-100 rounded-xl">
     <div class="col-span-1 mt-6 ml-2">
         <form method="get" action="{% url 'item:items' %}">
-            <input name="query" class="w-full py-6 px-6 border rounded-xl" type="text" value="{{query}}" placeholder="Find a bike, a chair, or a car...">
+            <input name="query" class="w-full py-6 px-6 border rounded-xl" type="text" value="{{query}}" placeholder="Find a bike,a chair or a car...">
             <button class="mt-2 py-4 px-8 text-lg bg-teal-500 text-white rounded-xl">Search</button>
         </form>
 
         <hr class="my-6">
         <p class="font-semibold">Categories</p>
         <ul>
+
             {% for category in categories %}
             <li class="py-2 px-2 rounded-xl{% if category.id == category_id %} bg-gray-200 {% endif %}" >
                 <a href="{% url 'item:items' %}?query={{query}}&category={{category.id}}">{{category.name}}</a>
+
             </li>
             {% endfor %}
         </ul>
@@ -173,6 +29,7 @@
         </ul>
     </div>
     <div class="col-span-3 mt-6">
+
         <div class="grid grid-cols-3 gap-3">
             {% for item in items %}
             <div>
@@ -189,9 +46,9 @@
             </div>
             {% endfor %}
         </div>
+
     </div>
 </div>
-{% endblock %}
 
-</body>
-</html>
+
+{% endblock %}
