@@ -3,16 +3,59 @@
 {% block title %} New Conversation {% endblock %}
 
 {% block content %}
-<h1 class="mb-6 text-3xl">New Conversation</h1>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    body{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: #f5f5f5;
+    }
+        
+
+    form{
+        background-color: #fff;
+        margin: 20px;
+        max-width: 70%;
+        box-shadow: 10px 10px 10px rgba(1,1,1,0.2);
+        border-radius: 1rem;
+        padding: 20px;
+
+
+
+        
+    }
+    .send{
+        border: 2px solid skyblue;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        padding: 10px;
+        border-radius: 1rem;
+    }
+</style>
+<body>
+
+
+<h1 class="">New Conversation</h1>
 <form method="POST" action=".">
     {% csrf_token %}
 
-    <div class="space-y-4">
+    <div class="">
         {{ form.as_p }}
     </div>
 
         {% if form.errors or form.non_field_errors %}
-            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+            <div class="">
                 {% for field in form %}
                 {{ field.errors }}
                 {% endfor %}
@@ -20,6 +63,10 @@
             </div>
         {% endif %}
 
-    <button class="py-4 px-8 mt-6 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Send</button>
+    <button class="send">Send</button>
 </form>
+
+
+</body>
+</html>
 {% endblock %}

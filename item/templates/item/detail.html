@@ -4,54 +4,223 @@
 
 {% block content %}
 
-<div class="grid grid-cols-5 gap-6">
-    <div class="col-span-3">
-        <img src="{{item.image.url}}" class="rounded-xl">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    body{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 0;
+        margin: 0;
+        background-color: #f5f5f5;
+    }
+    .container{
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1400px;
+        border-radius: 1rem;
+        box-shadow: 20px 20px 20px rgba(1,1,1,0.2);
+    }
+
+    #container{
+        background-color: #fff;
+
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1400px;
+        border-radius: 1rem;
+        box-shadow: 20px 20px 20px rgba(1,1,1,0.2);
+    }
+
+    .container img{
+        height: 410px;
+        margin: 20px;
+        box-shadow: 20px 20px 20px rgba(1,1,1,0.2);
+
+    }
+
+    .container .img{
+        height: 200px;
+        margin: 20px;
+        box-shadow: 20px 20px 20px rgba(1,1,1,0.2);
+
+    }
+
+    
+    #container img{
+        height: 410px;
+        margin: 20px;
+        box-shadow: 20px 20px 20px rgba(1,1,1,0.2);
+
+    }
+
+    #container .img{
+        height: 200px;
+
+        margin: 20px;
+        box-shadow: 20px 20px 20px rgba(1,1,1,0.2);
+
+    }
+
+
+    .description{
+        margin: 20px 0px 20px 40px;
+        font-size: x-large;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .description .p{
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+    .desc{}
+
+    .description .a{
+        background-color: rgb(112, 209, 247);
+        border-radius: 1rem;
+        padding: 1rem;
+        margin-top: 20px;  
+
+    }
+
+    .description .a:hover{
+        background-color: #999;
+    }
+
+    .description .a-red{
+        background-color: rgb(244, 73, 121);
+        border-radius: 1rem;
+        padding: 1rem;  
+        
+    }
+
+    .related_items{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    img{
+        border-radius: 1rem;
+    }
+
+    .items{
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+        box-shadow: 20px 20px 20px rgba(1,1,1,0.2);
+        margin: 20px;
+
+    }
+
+    .name{
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+    
+
+    @media (max-width: 786px){
+        .container{
+            width: 90%;
+            flex-wrap: wrap;
+        }
+        .description{
+            font-size: large;
+        }
+        #container .img{
+            height: 200px;
+            width: 200px;
+            margin: 20px;
+            box-shadow: 20px 20px 20px rgba(1,1,1,0.2);
+
+        }
+    }
+
+
+</style>
+<body>
+
+
+    
+<div class="container">
+    <div class="">
+        <img src="{{item.image.url}}" class="">
     </div>
 
-    <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
-        <h1 class="mb-6" text-3xl>{{item.name}}</h1>
-        <p class="text-gray-500">
-            <Strong>Price:{{item.price}}</Strong>
-        </p>
-        <p class="text-gray-500">
-            <Strong>Seller:{{item.created_by}}</Strong>
-        </p>
-        {% if item.description %}
+    <div class="description">
+        <h1 class=""><b>{{item.name}}</b></h1>
+        <div class="p">
 
-        <p class="text-gray-700">
-            <strong class="text-gray-500">Description:</strong><br>
-            {{item.description}}
-        </p>
+            <p class="">
+                Price:<Strong>{{item.price}}</Strong>
+            </p>
+            <p class="">
+                Seller:<Strong>{{item.created_by}}</Strong>
+            </p>
+            {% if item.description %}
+
+            <p >
+                <strong class="">Description:</strong><br>
+                {{item.description}}
+            </p>
+
+        </div>
 
         {% endif %}
 
         {% if request.user == item.created_by %}
-        <div class="mt-6 p-6 bg-white rounded-xl">
+        <div>
+
+        <div class="desc">
             <p>This is your Item!</p>
-            <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">Edit</a>
-            <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Delete</a>
+            <a href="{% url 'item:edit' item.id %}" class="a">Edit</a>
+            <a href="{% url 'item:delete' item.id %}" class="a-red">Delete</a>
         </div>
         {% else %}
-            <a href="{% url 'conversation:new' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700" >Contact Seller</a>
-        {% endif %}    
+            <a href="{% url 'conversation:new' item.id %}" class="a" >Contact Seller</a>
+        {% endif %}
+        </div>
+
         </div>
 </div>
 
-<div class="mt-6 py-12 px-6 bg-gray-100 rounded-xl">
-    <h1 class="mb-12 text-2xl text-center" >Related Items</h1>
+<div id="container">
+    <h1 class="name" align="center" >Related Items</h1>
 
-    <div class="grid grid-cols-3 gap-3">
+    <div class="related_items">
         {% for item in related_items %}
-        <div>
+        <div class="items">
             <a href="{% url 'item:detail' item.id %}">
                 <div>
-                    <img src="{{ item.image.url }}" class="rounded-t-xl"> 
+                    <img src="{{ item.image.url }}" class="img"> 
                 </div>
 
-                <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">{{ item.name }}</h2>
-                    <p class="text-gray-500">Price:{{item.price}}</p>
+                <div class="description">
+                    <h2 class="">{{ item.name }}</h2>
+                    <p class="">Price:{{item.price}}</p>
                 </div>
             </a>
         </div>
@@ -61,5 +230,9 @@
 
 
 </div>
+
+
+</body>
+</html>
 
 {% endblock %}

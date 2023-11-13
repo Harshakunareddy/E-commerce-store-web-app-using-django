@@ -61,7 +61,7 @@
     .hvr a img{
         border-radius: 1rem;
         
-        max-width: 450px;
+        width: 450px;
         height: 400px;
     }
 
@@ -71,6 +71,24 @@
         margin: 14px;
         border-radius: 1rem;
     }
+
+    .category{
+        width: 300px;
+        height: 140px;
+        padding: 20px;
+        
+    }
+
+    .category p{
+        color: rgb(3, 90, 125);
+        font-weight: bolder;
+        margin: 20px auto;
+        font-size: 700;
+    } 
+
+
+
+
 
 
     
@@ -99,16 +117,16 @@
     </div>
 </div>
 
-<div class="">
-    <h1 class="" >Categories</h1>
+<div class="index">
+    <h1 class="h" align="center">Categories</h1>
 
-    <div class="">
+    <div class="itemsflex">
         {% for category in categories %}
-        <div>
+        <div class="hvr">
             <a href="#">
                 <div class="">
-                    <div class="">
-                        <h2 class="">{{ category.name }}</h2>
+                    <div class="category">
+                        <p class="name">{{ category.name }}</p>
                         <p class="">{{category.items.count}} Items</p>
                     </div>
                 </div>

@@ -3,44 +3,147 @@
 {% block title %} Items {% endblock %}
 
 {% block content %}
-<div class="pb-6 grid grid-cols-4 gap-4 bg-gray-100 rounded-xl">
-    <div class="col-span-1 mt-6 ml-2">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+        
+    
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 0;
+        margin: 0;
+        background-color: #f5f5f5;
+    
+    }
+
+    .container{
+        max-width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+        background-color: #fff;
+    }
+
+    .search{
+        margin: 20px auto;
+        box-shadow: 20px 20px 20px rgba(1,1,1,0.1);
+        width: 100%;
+    }
+
+    .find{
+        width: 100%;
+        height: 4rem;
+        border: 2px solid skyblue;
+        border-radius: 1rem;
+        text-align: center;
+
+    }
+
+    .findclass{
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button{
+        margin: 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: skyblue;
+        font-size: 20px;
+        padding: 10px;
+        border-radius: 1rem;
+    }
+
+    .name{
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+
+    .category_flex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    img{
+        max-width: 250px;
+        max-height: 250px;
+    }
+
+    .cate{
+        margin: 15px;
+        border-radius: 1rem;
+        border: solid skyblue 2px;
+        padding: 10px;
+    }
+
+    .flex{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .a{
+        margin: 20px;
+    }
+
+
+</style>
+<body>
+    
+<div class="container">
+    <div class="search">
         <form method="get" action="{% url 'item:items' %}">
-            <input name="query" class="w-full py-6 px-6 border rounded-xl" type="text" value="{{query}}" placeholder="Find a bike,a chair or a car...">
-            <button class="mt-2 py-4 px-8 text-lg bg-teal-500 text-white rounded-xl">Search</button>
+            <div class="findclass">
+                <input name="query" class="find" type="text" value="{{query}}" placeholder="Find a bike,a chair or a car...">
+            </div>
+            <button class="button">Search</button>
         </form>
 
-        <hr class="my-6">
-        <p class="font-semibold">Categories</p>
-        <ul>
+        <hr class="">
+        <p class="name" align="center">Categories</p>
+        <ul class="category_flex">
 
             {% for category in categories %}
-            <li class="py-2 px-2 rounded-xl{% if category.id == category_id %} bg-gray-200 {% endif %}" >
+            <li class="cate {% if category.id == category_id %} {% endif %}" >
                 <a href="{% url 'item:items' %}?query={{query}}&category={{category.id}}">{{category.name}}</a>
 
             </li>
             {% endfor %}
         </ul>
 
-        <hr class="my-6">
-        <p class="font-semibold">Clear Filters</p>
-        <ul>
-            <li><a href="{% url 'item:items' %}" class="mt-2 py-4 px-8 inline-block bg-yellow-500 text-lg rounded-xl text-white">Clear</a></li>
+        <hr class="">
+        <p class="name">Clear Filters</p>
+        <ul class="category_flex">
+            <li class="cate"><a href="{% url 'item:items' %}" class="">Clear</a></li>
         </ul>
     </div>
-    <div class="col-span-3 mt-6">
+    <div class="container">
 
-        <div class="grid grid-cols-3 gap-3">
+        <div class="flex">
             {% for item in items %}
-            <div>
+            <div class="a">
                 <a href="{% url 'item:detail' item.id %}">
                     <div>
-                        <img src="{{ item.image.url }}" class="rounded-t-xl"> 
+                        <img src="{{ item.image.url }}" class=""> 
                     </div>
     
-                    <div class="p-6 bg-white rounded-b-xl">
-                        <h2 class="text-2xl">{{ item.name }}</h2>
-                        <p class="text-gray-500">Price:{{item.price}}</p>
+                    <div class="">
+                        <h2 class="">{{ item.name }}</h2>
+                        <p class="">Price:{{item.price}}</p>
                     </div>
                 </a>
             </div>
@@ -51,4 +154,6 @@
 </div>
 
 
+</body>
+</html>
 {% endblock %}

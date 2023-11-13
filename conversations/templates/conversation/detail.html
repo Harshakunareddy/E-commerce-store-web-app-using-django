@@ -3,13 +3,71 @@
 {% block title %}Conversation{% endblock %}
 
 {% block content %}
-<h1 class="mb-6 text-3xl">Conversation</h1>
-<div class="space-y-6">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    body{
+        background-color: #f5f5f5;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    }
+    .conversation{
+        margin: 20px;
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+
+    .chatsection{
+        background-color: #fff;
+        margin: 20px auto;
+        max-width: 70%;
+        box-shadow: 10px 10px 10px rgba(1,1,1,0.2);
+        border-radius: 1rem;
+        padding: 20px;
+
+        
+    }
+    form{
+        background-color: #fff;
+        margin: 20px auto;
+        max-width: 70%;
+        box-shadow: 10px 10px 10px rgba(1,1,1,0.2);
+        border-radius: 1rem;
+        padding: 20px;
+
+
+        
+    }
+    .send{
+        border: 2px solid skyblue;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        padding: 10px;
+        border-radius: 1rem;
+    }
+
+
+</style>
+<body>
+    
+<h1 class="conversation" align="center">Conversation</h1>
+<div class="chatsection">
     {% for message in conversation.messages.all %}
     
-        <div class="p-6 flex {% if message.created_by == request.user %} bg-blue-200 {% else %}bg-gray-100 {% endif %}rounded-xl">
+        <div class="chat {% if message.created_by == request.user %} {% else %} {% endif %}">
             <div>
-                <p class="mb-4"><strong>{{message.created_by.username}}</strong> @ {{message.created_at}}</p>
+                <p class=""><strong>{{message.created_by.username}}</strong> @ {{message.created_at}}</p>
                 <p>{{message.content}}</p>
             </div>
         </div>
@@ -20,6 +78,11 @@
 <form method="POST" action=".">
     {% csrf_token %}
     {{form.as_p}}
-    <button class="py-4 px-8 text-lg mt-2 bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Send</button>
+    <button class="send">Send</button>
 </form>
+
+
+</body>
+</html>
 {% endblock %}
+
