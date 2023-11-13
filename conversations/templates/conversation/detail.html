@@ -57,6 +57,9 @@
         border-radius: 1rem;
     }
 
+    .content{
+        width: 100%;
+    }
 
 </style>
 <body>
@@ -77,7 +80,9 @@
 
 <form method="POST" action=".">
     {% csrf_token %}
+<div class="content">
     {{form.as_p}}
+</div>
     <button class="send">Send</button>
 </form>
 
